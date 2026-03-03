@@ -1,0 +1,17 @@
+{
+  "ci": {
+    "collect": {
+      "url": ["http://localhost:3000/"],
+      "startServerCommand": "npm run build && npm run start",
+      "startServerReadyPattern": "started server on",
+      "numberOfRuns": 3,
+      "settings": {
+        "preset": "mobile"
+      }
+    },
+    "upload": {
+      "target": "filesystem",
+      "outputDir": "./lhci"
+    }
+  }
+}

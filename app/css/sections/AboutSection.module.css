@@ -1,0 +1,278 @@
+.imgWrap {
+  position: relative;
+  width: 360px;
+  height: 460px;
+  margin: 0 auto;
+}
+
+.imgBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 75% 25% 35% 65% / 43% 36% 64% 57%;
+  opacity: 0.35;
+  filter: blur(14px);
+  transform: scale(1.05);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.imgBg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 75% 25% 35% 65% / 43% 36% 64% 57%;
+  background: rgba(255, 90, 0, 0.35);
+}
+
+.img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 29% 71% 77% 23% / 32% 44% 56% 68%;
+  overflow: hidden;
+  z-index: 1;
+}
+.bigTitle {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: clamp(2.5rem, 6vw, 2rem);
+  font-weight: 800;
+  color: #ed6c02;
+  letter-spacing: 0.05em;
+  text-transform: lowercase;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+
+/* =============== */
+/* Tap Kaset Style */
+/* =============== */
+
+
+
+
+  .cassette-frame {
+    width: 260px;
+    height: 420px;
+    background: #e3e3e3;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    transition: 0.3s;
+  }
+
+  .card {
+    width: 300px;
+    height: 200px;
+    background: #252525;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+                rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+                rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    transform: rotate(90deg);
+    transform-origin: center;
+    transition: 0.4s ease;
+  }
+  @media (max-width: 992px) {
+
+    .cassette-frame {
+      width: 350px;
+      height: 230px;
+    }
+    .feedback-container{
+    width: 95%;
+
+  }
+
+    .card {
+      transform: rotate(0deg);
+      scale: 0.85;
+    }
+  }
+
+
+  .ups{display:flex;}
+  .screw1,.screw2,.screw3,.screw4{
+    display:flex;color:black;border:1px solid black;
+    background-color:rgb(239, 100, 0);height:0.75em;width:0.75em;
+    border-radius:50%;align-items:center;justify-content:center;
+  }
+  .screw1{margin:0.5em;}
+  .screw2{margin-top:0.5em;margin-left:15.8em;}
+  .downs{display:flex;}
+  .screw3{margin-top:-1.3em;margin-left:0.5em;}
+  .screw4{margin-top:-1.3em;margin-left:16.35em;}
+
+  .card1{
+    width:230px;height:115px;margin-top:0.5em;margin-left:2.18em;
+    background-color:#d9c6b0;
+    clip-path:polygon(5% 0,95% 0,100% 10%,100% 100%,100% 100%,0 100%,0 100%,0 10%);
+    border-radius:5px;
+  }
+
+  .line1,.line2{
+    position:relative;width:200px;height:1px;background:black;left:0.8em;
+  }
+  .line1{top:1em;}
+  .line2{top:2em;}
+
+  .yl{
+    display:flex;width:228px;height:50px;background:#f9ae6b;
+    margin-top:2.5em;margin-left:0.06em;
+  }
+
+  .roll{
+    width:8em;height:2em;margin-left:3em;border-radius:15px;
+    background:#171717;display:flex;
+  }
+
+  .tape{
+    width:3em;height:1.5em;position:relative;left:0.9em;background:#252525;
+  }
+
+  .s_wheel,.e_wheel{
+    display:flex;align-items:center;justify-content:center;
+    position:relative;top:0.215em;width:1.55em;height:1.55em;
+    border:2px dashed #fff;box-shadow:0 0 0 4.4px #fff;
+    border-radius:50%;animation:2s run infinite linear;
+  }
+  .s_wheel{left:0.15em;}
+  .e_wheel{left:1.7em;}
+
+  .num{margin-left:1.5em;align-self:center;color:#3b2a18;font-weight:700;}
+
+  .or{
+    display:flex;width:230px;height:18px;background:#ce5f1f;
+    margin-top:0.4em;border-bottom-left-radius:4px;
+    border-bottom-right-radius:4px;align-items:center;justify-content:center;
+  }
+
+  .time{font-size:1em;color:#1b120a;}
+
+  .card2_main{filter:drop-shadow(4px 4px 14px rgba(0,0,0,1));}
+
+  .card2{
+    width:150px;height:50px;margin-top:0;margin-left:4.6em;
+    background:#252525;clip-path:polygon(10% 0%,90% 0%,100% 100%,0% 100%);
+  }
+
+  .screw5{
+    position:relative;display:flex;color:black;border:1px solid black;
+    background:rgb(211, 211, 211);height:0.75em;width:0.75em;left:4.25em;top:-0.5em;
+    border-radius:50%;align-items:center;justify-content:center;
+  }
+
+  .c1,.c2,.t1,.t2{
+    position:relative;width:0.5em;height:0.5em;background:rgb(190, 190, 190);
+  }
+  .c1,.c2{border-radius:50%;}
+  .t1,.t2{border-radius:2px;}
+
+  .c1{left:1.5em;top:2em;}
+  .t1{left:3em;top:1em;}
+  .t2{left:5.7em;top:-0.2em;}
+  .c2{left:7.2em;top:-0.2em;}
+
+  @keyframes run {100%{transform:rotate(360deg);}}
+
+
+/* About button */
+.learnMore {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  border: 0;
+  vertical-align: middle;
+  text-decoration: none;
+  background: transparent;
+  padding: 0;
+  font-size: inherit;
+  font-family: inherit;
+  width: 13rem;
+}
+
+.circle {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  position: relative;
+  display: block;
+  margin: 0;
+  width: 3rem;
+  height: 3rem;
+  background: #ff5a00;
+  border-radius: 1.625rem;
+}
+
+.icon {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background: #fff;
+}
+
+.arrow {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  left: 0.625rem;
+  width: 1.125rem;
+  height: 0.125rem;
+  background: none;
+}
+
+.arrow::before {
+  position: absolute;
+  content: "";
+  top: -0.29rem;
+  right: 0.0625rem;
+  width: 0.625rem;
+  height: 0.625rem;
+  border-top: 0.125rem solid #fff;
+  border-right: 0.125rem solid #fff;
+  transform: rotate(45deg);
+}
+
+.buttonText {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.75rem 0;
+  margin: 0 0 0 1.85rem;
+  color: #ff5a00;
+  font-weight: 700;
+  line-height: 1.6;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.learnMore:hover .circle {
+  width: 100%;
+}
+
+.learnMore:hover .arrow {
+  background: #fff;
+  transform: translate(1rem, 0);
+}
+
+.learnMore:hover .buttonText {
+  color: #fff;
+}
+
+.learnMore:focus-visible .circle {
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.35);
+}
+
+ 
+

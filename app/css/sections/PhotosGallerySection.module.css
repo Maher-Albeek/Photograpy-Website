@@ -1,0 +1,211 @@
+.filterBar {
+  --main-color: #ff7700;
+  --main-color-opacity: #d98c4a1c;
+  --total-radio: 3;
+  --selected-index: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  position: relative;
+  padding: 0.35rem 0.4rem 0.8rem;
+  border-radius: 12px;
+  background: rgba(191, 163, 128, 0.06);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.filterWrapper {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto 2.5rem;
+  width: 100%;
+}
+
+.filterLabel {
+  position: relative;
+  z-index: 1;
+  padding: 0.35rem 0.9rem;
+  cursor: pointer;
+  color: #8a8a8a;
+  transition: color 0.25s ease;
+  font-weight: 600;
+  text-transform: capitalize;
+  white-space: nowrap;
+}
+
+.filterLabel span {
+  pointer-events: none;
+}
+
+.filterInput {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.filterInput:checked + span {
+  color: #ff5a00;
+}
+
+.gliderContainer {
+  position: absolute;
+  inset: auto 0 0 0;
+ /*  height: 10px; */
+  pointer-events: none;
+  z-index: 0;
+}
+
+.glider {
+  position: absolute;
+  height: 4px;
+  width: calc(100% / var(--total-radio));
+  background: linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0) 0%,
+    var(--main-color-opacity) 20%,
+    var(--main-color) 50%,
+    var(--main-color-opacity) 80%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  border-radius: 999px;
+  transform: translateX(calc(var(--selected-index) * 100%));
+  transition: transform 0.5s cubic-bezier(0.37, 1.95, 0.66, 0.56);
+  box-shadow:
+    0 10px 24px #ff5a00,
+    0 2px 8px #ff5a00;
+}
+
+.glider::before {
+  content: "";
+  position: absolute;
+  left: -5%;
+  right: -5%;
+  bottom: -45%;
+  top: 20%;
+  border-radius: inherit;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0) 0%,
+    var(--main-color) 65%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  filter: blur(14px);
+  opacity: 0.7;
+}
+
+.glider::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -90%;
+  transform: translateX(-50%);
+  width: 180%;
+  height: 160%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(191, 163, 128, 0.22) 0%,
+    #ff5a00 45%,
+    rgba(191, 163, 128, 0) 70%
+  );
+  filter: blur(18px);
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.mySwiper {
+  width: 100%;
+  padding: 10px 0 50px;
+  position: relative;
+}
+
+.mySwiper :global(.swiper-pagination) {
+  position: absolute;
+  bottom: 10px;       
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.mySwiper :global(.swiper-slide) {
+  height: 520px;
+  width: clamp(260px, 28vw, 380px) !important;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.slide {
+  height: 100%;
+  display: flex !important;
+}
+
+.card {
+  position: relative;
+  flex: 1;
+  display: block;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--color-walnut);
+}
+
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.sliderWrap {
+  position: relative;
+}
+
+.navButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 2px solid var(--color-sand);
+  border-radius: 9999px;
+  color: var(--color-sand);
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease,
+    box-shadow 0.2s ease;
+  z-index: 10;
+}
+
+.navPrev {
+  left: -28px;
+}
+
+.navNext {
+  right: -28px;
+}
+
+@media (min-width: 769px) {
+  .navButton:hover,
+  .navButton:focus-visible {
+    background-color: var(--color-sand);
+    color: var(--color-ink);
+    border-color: #734022;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(191, 163, 128, 0.35);
+  }
+}
+
+@media (max-width: 768px) {
+  
+  .navPrev {
+    left: 4px;
+  }
+  .navNext {
+    right: 4px;
+  }
+}

@@ -1,0 +1,27 @@
+.arrowButton {
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 2px solid var(--color-sand);
+  border-radius: 9999px;
+  color: var(--color-sand);
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.arrowButton:hover,
+.arrowButton:focus-visible {
+  background-color: var(--color-sand);
+  color: var(--color-ink);
+  border-color: #734022;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(191, 163, 128, 0.35);
+}
+.blob {
+  aspect-ratio: 1;
+  clip-path: shape(from 7.46% 36.18%,curve to 18.94% 16.62% with 12.64% 26.29%,curve to 36.74% 5.69% with 25.24% 6.95%,curve to 59.78% 4.83% with 48.24% 4.44%,curve to 79.69% 13.37% with 71.33% 5.23%,curve to 90.99% 32.22% with 88.04% 21.51%,curve to 93.49% 53.69% with 93.93% 42.93%,curve to 86.69% 73.06% with 93.05% 64.45%,curve to 71.49% 87.81% with 80.32% 81.67%,curve to 51.42% 95.80% with 62.65% 93.95%,curve to 29.48% 92.89% with 40.19% 97.64%,curve to 13.17% 78.07% with 18.76% 88.14%,curve to 4.93% 57.03% with 7.58% 67.99%,curve to 7.46% 36.18% with 2.29% 46.07%);
+}

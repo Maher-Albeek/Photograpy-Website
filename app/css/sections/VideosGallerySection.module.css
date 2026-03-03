@@ -1,0 +1,117 @@
+
+
+.mySwiper {
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.mySwiper :global(.swiper-slide) {
+  background-position: center;
+  background-size: cover;
+  width: 620px;
+  height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.mySwiper :global(.swiper-pagination-bullet) {
+  background: #d9c6b0;
+  opacity: 0.4;
+}
+
+.mySwiper :global(.swiper-pagination-bullet-active) {
+  opacity: 1;
+}
+
+.videoSlide {
+  background: var(--color-sand);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.frameShell {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.frameShell::after {
+  content: "";
+  position: absolute;
+  inset: 8%;
+  background: rgba(242, 232, 220, 0.08);
+  filter: blur(8px);
+  z-index: 0;
+}
+
+.videoFrame {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background-color: transparent;
+}
+
+.videoTitle {
+  margin: 12px 0 4px;
+  text-align: center;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.sliderWrap {
+  position: relative;
+}
+
+.navButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 2px solid var(--color-sand);
+  border-radius: 9999px;
+  color: var(--color-sand);
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease,
+    box-shadow 0.2s ease;
+  z-index: 10;
+}
+
+.navPrev {
+  left: -28px;
+}
+
+.navNext {
+  right: -28px;
+}
+
+@media (min-width: 769px) {
+  .navButton:hover,
+  .navButton:focus-visible {
+    background-color: var(--color-sand);
+    color: var(--color-ink);
+    border-color: #734022;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(191, 163, 128, 0.35);
+  }
+}
+
+@media (max-width: 768px) {
+
+  .navPrev {
+    left: 4px;
+  }
+  .navNext {
+    right: 4px;
+  }
+}

@@ -1,0 +1,346 @@
+.wrapper {
+  --accent: #ff5a00;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  padding: 14px 22px;
+  background: transparent;
+  backdrop-filter: none;
+  box-shadow: none;
+  transition: background-color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, backdrop-filter 0.35s ease;
+}
+
+.scrim {
+  position: fixed;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 4;
+}
+
+.scrolled {
+  background: rgba(67, 61, 55, 0.647);
+  border-color: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.35);
+}
+
+.bar {
+  position: relative;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #ffe7d0;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.logoImg {
+  height: 32px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.28));
+}
+
+.logoText {
+  font-size: 14px;
+  letter-spacing: 0.16em;
+  color: #ffe7d0;
+}
+
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffe7d0;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+  padding: 10px 14px 10px 16px;
+  cursor: pointer;
+  transition: border-color 0.25s ease, background-color 0.25s ease, color 0.25s ease;
+}
+
+.toggle:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.toggleTextWrap {
+  overflow: hidden;
+  display: inline-flex;
+  height: 22px;
+}
+
+.toggleTextInner {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.toggleLine {
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #f5f5f9;
+}
+
+.icon {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.iconLine {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 2px;
+  background: #ffffff;
+  border-radius: 999px;
+  transform: translate(-50%, -50%);
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.iconLineV {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.preLayers {
+  display: none;
+}
+
+.preLayer {
+  flex: 0 0 26%;
+  border-radius: 12px;
+  opacity: 0.7;
+  transform: translateX(110%);
+  transition: transform 0.55s cubic-bezier(0.18, 0.84, 0.28, 1.04);
+}
+
+.panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: min(420px, 86vw);
+  background: rgba(8, 7, 14, 0.94);
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: -12px 0 36px rgba(0, 0, 0, 0.38);
+  transform: translateX(110%);
+  transition: transform 0.55s cubic-bezier(0.2, 0.8, 0.2, 1);
+  padding: 96px 32px 32px;
+  display: flex;
+  align-items: stretch;
+  z-index: 5;
+}
+
+.panelInner {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
+}
+
+.panelList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.panelItem {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.panelItem a {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  color: #ffe7d0;
+  font-size: 24px;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+}
+
+.panelItem a:hover .itemLabel::after,
+.panelItem a:focus-visible .itemLabel::after {
+  transform: scaleX(1);
+}
+
+.itemNumber {
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.64);
+}
+
+.itemLabel {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.itemLabel::after {
+  content: "";
+  width: 46px;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+  display: inline-block;
+}
+
+.socials {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.socialTitle {
+  color: rgba(255, 255, 255, 0.72);
+  letter-spacing: 0.1em;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.socialList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.socialItem {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.socialLink {
+  color: #f6f6ff;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  position: relative;
+  transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
+.socialLink:hover,
+.socialLink:focus-visible {
+  border-color: rgb(238, 91, 5);
+  background: rgba(240, 94, 2, 0.12);
+  transform: translateY(-2px);
+}
+
+.socialIcon {
+  width: 20px;
+  height: 20px;
+  stroke-width: 1.6;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.open .preLayer {
+  transform: translateX(0);
+}
+
+.open .scrim {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.open .panel {
+  transform: translateX(0);
+}
+
+.open .iconLine {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.open .iconLineV {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.open .panelItem {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.open .socialItem {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 900px) {
+  .wrapper {
+    padding: 12px 16px;
+  }
+
+  .panel {
+    width: min(460px, 92vw);
+    padding-top: 88px;
+  }
+
+  .panelItem a {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 640px) {
+  .logoText {
+    font-size: 12px;
+  }
+
+  .toggle {
+    padding: 9px 12px 9px 14px;
+  }
+
+  .panel {
+    width: 100vw;
+  }
+
+  .socials {
+    margin-bottom: 25px;
+  }
+}

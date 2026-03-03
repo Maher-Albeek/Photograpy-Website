@@ -1,0 +1,48 @@
+{
+  "name": "v7-next",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --webpack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "lighthouse:mobile": "node -e \"require('fs').mkdirSync('lhci',{recursive:true})\" && start-server-and-test \"npm run build && npm run start\" http://localhost:3000 \"lighthouse http://localhost:3000 --form-factor=mobile --screenEmulation.mobile=true --throttling-method=simulate --output=html --output-path=./lhci/lighthouse-mobile.html --no-enable-error-reporting\"",
+    "lighthouse:desktop": "node -e \"require('fs').mkdirSync('lhci',{recursive:true})\" && start-server-and-test \"npm run build && npm run start\" http://localhost:3000 \"lighthouse http://localhost:3000 --preset=desktop --form-factor=desktop --screenEmulation.disabled=true --throttling-method=simulate --output=html --output-path=./lhci/lighthouse-desktop.html --no-enable-error-reporting\"",
+    "lhci": "lhci autorun --config=./lighthouserc.json"
+  },
+  "dependencies": {
+    "@fancyapps/ui": "^6.1.7",
+    "@neondatabase/serverless": "^1.0.2",
+    "@vercel/blob": "^2.1.0",
+    "bcryptjs": "^3.0.3",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.562.0",
+    "motion": "^12.26.2",
+    "mysql2": "^3.16.0",
+    "next": "16.1.0",
+    "ogl": "^1.0.11",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "sharp": "^0.34.5",
+    "swiper": "^12.0.3",
+    "tailwind-merge": "^3.4.0",
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "devDependencies": {
+    "@lhci/cli": "^0.13.0",
+    "@netlify/plugin-nextjs": "^5.15.6",
+    "@tailwindcss/postcss": "^4.1.18",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "daisyui": "^5.5.14",
+    "eslint": "^9",
+    "eslint-config-next": "16.1.0",
+    "lighthouse": "^12.0.0",
+    "start-server-and-test": "^2.0.0",
+    "tailwindcss": "^4.1.18",
+    "typescript": "^5"
+  }
+}
