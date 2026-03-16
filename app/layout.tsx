@@ -5,7 +5,14 @@ export const revalidate = 0;
 import "./globals.css"
 import localFont from "next/font/local"
 import { Allan, Bodoni_Moda, Ephesis } from "next/font/google"
+import { cookies } from "next/headers"
 import MouseTrackerGate from "@/components/MouseTrackerGate"
+import CookieBanner from "@/components/cookie-consent/CookieBanner"
+import CookiePreferencesModal from "@/components/cookie-consent/CookiePreferencesModal"
+import { CookieConsentProvider } from "@/components/cookie-consent/CookieConsentProvider"
+import GoogleAnalyticsLoader from "@/components/cookie-consent/GoogleAnalyticsLoader"
+import GoogleConsentModeScript from "@/components/cookie-consent/GoogleConsentModeScript"
+import { CONSENT_COOKIE_NAME } from "@/lib/cookie-consent/config"
 
 const bilona = localFont({
   src: "../public/fonts/BilonaMedium-2v6W3.otf",
@@ -67,18 +74,27 @@ export const metadata = {
   },
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const cookieStore = await cookies()
+  const initialConsentValue = cookieStore.get(CONSENT_COOKIE_NAME)?.value ?? null
+
   return (
     <html lang="en">
       <body
         className={`${bilona.variable} ${cabinest.variable} ${aurelia.variable} ${csBeauty.variable} ${ephesis.variable} ${allan.variable} ${bodoniModa.variable}`}
       >
-        <MouseTrackerGate />
-        {children}
+        <GoogleConsentModeScript />
+        <CookieConsentProvider initialConsentValue={initialConsentValue}>
+          <MouseTrackerGate />
+          <GoogleAnalyticsLoader />
+          {children}
+          <CookieBanner />
+          <CookiePreferencesModal />
+        </CookieConsentProvider>
       </body>
     </html>
   )

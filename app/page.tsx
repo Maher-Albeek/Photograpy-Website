@@ -11,7 +11,6 @@ import SectionTitle from "@/components/sections/TitelSection"
 import FAQSection from "@/components/sections/FAQSection"
 import ContactSection from "@/components/sections/ContactSection"
 import Footer from "@/components/include/Footer"
-import CookieBanner from "@/components/include/CookieBanner"
 
 
 export default function HomePage() {
@@ -37,7 +36,6 @@ export default function HomePage() {
       <SectionTitle title=" Contact" bgcolor="#1b1b1b" txtcolor="#ff5a00" />
       <ContactSection  />
       <Footer />
-      <CookieBanner />
     </>
   )
 }

@@ -1,7 +1,15 @@
 import mysql from "mysql2/promise";
 
+type SqlValue = unknown;
+
+type DbQueryResult<T = unknown> = Promise<[T, mysql.FieldPacket[]]>;
+
+type DbClient = {
+  query<T = unknown>(sql: string, values?: SqlValue[]): DbQueryResult<T>;
+};
+
 type GlobalWithDbPool = typeof globalThis & {
-  _dbPool?: mysql.Pool;
+  _dbPool?: DbClient;
 };
 
 const globalForDb = globalThis as GlobalWithDbPool;
@@ -10,13 +18,10 @@ const globalForDb = globalThis as GlobalWithDbPool;
 const skipDb = process.env.SKIP_DB === "1";
 
 // No-op pool for builds and DB-free runs.
-const noopQuery: mysql.Pool["query"] = ((..._args: Parameters<mysql.Pool["query"]>) =>
-  Promise.resolve([[], []] as unknown as Awaited<
-    ReturnType<mysql.Pool["query"]>
-  >)) as mysql.Pool["query"];
-
-const noopDb: Pick<mysql.Pool, "query"> = {
-  query: noopQuery,
+const noopDb: DbClient = {
+  async query<T = unknown>() {
+    return [[] as T, []];
+  },
 };
 
 function requireEnv(name: string): string {
@@ -29,9 +34,9 @@ function requireEnv(name: string): string {
   return v;
 }
 
-function createMysqlPool(): mysql.Pool {
+function createMysqlPool(): DbClient {
   // Skip pool creation when DB access is disabled.
-  if (skipDb) return noopDb as mysql.Pool;
+  if (skipDb) return noopDb;
 
   const isServerless = Boolean(
     process.env.VERCEL ||
@@ -85,16 +90,12 @@ function createMysqlPool(): mysql.Pool {
 }
 
 // Reuse a single pool across hot reloads to avoid exhausting connections.
-export const db: mysql.Pool =
-  skipDb
-    ? (noopDb as mysql.Pool)
-    : globalForDb._dbPool ?? createMysqlPool();
+export const db: DbClient =
+  skipDb ? noopDb : globalForDb._dbPool ?? createMysqlPool();
 
 if (!skipDb && !globalForDb._dbPool) {
   globalForDb._dbPool = db;
 }
-
-type SqlValue = unknown;
 
 type SqlTag = {
   <T = any>(strings: TemplateStringsArray, ...values: SqlValue[]): Promise<T>;

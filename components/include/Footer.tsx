@@ -1,4 +1,5 @@
 import Link from "next/link"
+import CookieSettingsButton from "@/components/cookie-consent/CookieSettingsButton"
 import FooterSubscribe from "./FooterSubscribe"
 
 export default function Footer() {
@@ -53,6 +54,9 @@ export default function Footer() {
                 <Link href="/datenschutz" className="transition hover:text-[var(--color-caramel)]">
                   Datenschutz
                 </Link>
+              </li>
+              <li>
+                <CookieSettingsButton />
               </li>
             </ul>
           </div>
