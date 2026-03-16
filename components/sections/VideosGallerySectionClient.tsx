@@ -8,6 +8,7 @@ import "swiper/css/effect-coverflow"
 import "swiper/css/pagination"
 import "swiper/css/navigation"
 import styles from "@/app/css/sections/VideosGallerySection.module.css"
+import ExternalMediaEmbed from "@/components/cookie-consent/ExternalMediaEmbed"
 
 type Video = {
   title: string
@@ -43,7 +44,7 @@ function getEmbedUrl(video: Video) {
   if (video.source === "youtube") {
     const id = extractYouTubeId(video.videoId || "")
     if (!id) return ""
-    return `https://www.youtube.com/embed/${id}`
+    return `https://www.youtube-nocookie.com/embed/${id}`
   }
   if (video.source === "vimeo") {
     const id = extractVimeoId(video.videoId || "")
@@ -54,6 +55,13 @@ function getEmbedUrl(video: Video) {
     return video.url || ""
   }
   return ""
+}
+
+function getVideoProvider(video: Video) {
+  if (video.source === "bunny") return "Bunny Stream"
+  if (video.source === "youtube") return "YouTube"
+  if (video.source === "vimeo") return "Vimeo"
+  return "einen externen Anbieter"
 }
 
 export default function VideosGallerySectionClient({
@@ -118,14 +126,19 @@ export default function VideosGallerySectionClient({
               return (
                 <SwiperSlide key={`${video.source}-${i}`} className={styles.videoSlide}>
                   <div className={styles.frameShell}>
-                    <iframe
-                      className={styles.videoFrame}
-                      src={embedUrl}
-                      loading="lazy"
-                      allow="autoplay; fullscreen"
-                      allowFullScreen
+                    <ExternalMediaEmbed
                       title={video.title}
-                    />
+                      provider={getVideoProvider(video)}
+                    >
+                      <iframe
+                        className={styles.videoFrame}
+                        src={embedUrl}
+                        loading="lazy"
+                        allow="autoplay; fullscreen"
+                        allowFullScreen
+                        title={video.title}
+                      />
+                    </ExternalMediaEmbed>
                   </div>
                   <h3 className={styles.videoTitle}>{video.title}</h3>
                 </SwiperSlide>

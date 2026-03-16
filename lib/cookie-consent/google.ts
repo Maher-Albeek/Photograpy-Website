@@ -50,12 +50,12 @@ export function mapSelectionsToGoogleConsent(
   selections: ConsentSelections,
 ): GoogleConsentState {
   return {
-    ad_personalization: selections.marketing ? "granted" : "denied",
-    ad_storage: selections.marketing ? "granted" : "denied",
-    ad_user_data: selections.marketing ? "granted" : "denied",
+    ad_personalization: "denied",
+    ad_storage: "denied",
+    ad_user_data: "denied",
     analytics_storage: selections.analytics ? "granted" : "denied",
-    functionality_storage: selections.preferences ? "granted" : "denied",
-    personalization_storage: selections.preferences ? "granted" : "denied",
+    functionality_storage: "denied",
+    personalization_storage: "denied",
     security_storage: "granted",
   };
 }

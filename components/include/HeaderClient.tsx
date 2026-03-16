@@ -28,7 +28,7 @@ const navItems: NavItem[] = [
   { label: "About Me", href: "/aboutMe", aria: "Learn more about me" },
   { label: "Photo Gallery", href: "/photoGallery", aria: "View my photo gallery" },
   { label: "Video Gallery", href: "/videoGallery", aria: "View my video gallery" },
-  { label: "impressum", href: "/impressum", aria: "impressum" },
+  { label: "Impressum", href: "/impressum", aria: "Impressum" },
   { label: "Datenschutz", href: "/datenschutz", aria: "Datenschutz" },
 ]
 

@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { useState } from "react"
 import styles from "@/app/css/Footer.module.css"
 
@@ -7,6 +8,7 @@ export default function FooterSubscribe() {
   const [email, setEmail] = useState("")
   const [status, setStatus] = useState<null | "success" | "error">(null)
   const [loading, setLoading] = useState(false)
+  const [privacyAccepted, setPrivacyAccepted] = useState(false)
 
   const subscribe = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -16,13 +18,14 @@ export default function FooterSubscribe() {
     const res = await fetch("/api/subscribe", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email }),
+      body: JSON.stringify({ email, privacyAccepted }),
     })
 
     setLoading(false)
 
     if (res.ok) {
       setEmail("")
+      setPrivacyAccepted(false)
       setStatus("success")
     } else {
       setStatus("error")
@@ -42,11 +45,10 @@ export default function FooterSubscribe() {
               required
               className={styles.subscribeInput}
               value={email}
-              onChange={e => setEmail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="E-Mail"
             />
-            <label htmlFor="footer-email" className={styles.subscribeLabel}>
-            </label>
+            <label htmlFor="footer-email" className={styles.subscribeLabel}></label>
           </div>
 
           <button
@@ -68,14 +70,36 @@ export default function FooterSubscribe() {
             <span className="sr-only">{loading ? "Sending..." : "Subscribe"}</span>
           </button>
         </div>
+
+        <label className="mt-4 flex items-start gap-3 text-sm text-[var(--color-ink)] opacity-80">
+          <input
+            type="checkbox"
+            checked={privacyAccepted}
+            onChange={(e) => setPrivacyAccepted(e.target.checked)}
+            required
+            className="mt-1 accent-[var(--accent)]"
+          />
+          <span>
+            Ich möchte den Newsletter erhalten und habe die{" "}
+            <Link href="/datenschutz" className="underline underline-offset-3">
+              Datenschutzhinweise
+            </Link>{" "}
+            gelesen. Bitte Double-Opt-In in Brevo vor dem Livegang prüfen.
+          </span>
+        </label>
       </form>
 
       {status === "success" && (
-        <p className="text-sm text-[var(--color-ink)]">Subscribed successfully.</p>
+        <p className="text-sm text-[var(--color-ink)]">
+          Anmeldung gespeichert. Bitte prüfen Sie Ihren Posteingang auf eine
+          Bestätigungs-E-Mail.
+        </p>
       )}
 
       {status === "error" && (
-        <p className="text-sm text-[var(--color-ink)]">Subscription failed. Please try again.</p>
+        <p className="text-sm text-[var(--color-ink)]">
+          Anmeldung fehlgeschlagen. Bitte versuchen Sie es erneut.
+        </p>
       )}
     </>
   )

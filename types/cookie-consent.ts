@@ -1,4 +1,4 @@
-export type ConsentCategory = "necessary" | "preferences" | "analytics" | "marketing";
+export type ConsentCategory = "necessary" | "analytics" | "externalMedia";
 
 export type ConsentSelections = Record<ConsentCategory, boolean>;
 

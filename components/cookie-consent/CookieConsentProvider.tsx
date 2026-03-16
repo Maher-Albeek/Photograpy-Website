@@ -72,7 +72,7 @@ export function CookieConsentProvider({
       applyGoogleConsentUpdate(consent.categories);
       setAnalyticsDisabled(GA_MEASUREMENT_ID, !consent.categories.analytics);
 
-      if (!consent.categories.analytics && !consent.categories.marketing) {
+      if (!consent.categories.analytics) {
         clearGoogleCookies();
       }
 
@@ -90,7 +90,7 @@ export function CookieConsentProvider({
     applyGoogleConsentUpdate(nextConsent.categories);
     setAnalyticsDisabled(GA_MEASUREMENT_ID, !nextConsent.categories.analytics);
 
-    if (!nextConsent.categories.analytics && !nextConsent.categories.marketing) {
+    if (!nextConsent.categories.analytics) {
       clearGoogleCookies();
     }
   }
@@ -98,9 +98,8 @@ export function CookieConsentProvider({
   function acceptAll(): void {
     commitConsent(
       createStoredConsent({
-        preferences: true,
         analytics: true,
-        marketing: true,
+        externalMedia: true,
       }),
     );
   }

@@ -6,6 +6,8 @@ type ContactBody = {
   email?: string
   category?: string
   message?: string
+  privacyAccepted?: boolean
+  website?: string
 }
 
 function normalizeText(value: unknown) {
@@ -34,10 +36,16 @@ export async function POST(req: Request) {
     const email = normalizeText(body.email)
     const category = normalizeText(body.category)
     const message = normalizeText(body.message)
+    const website = normalizeText(body.website)
+    const privacyAccepted = body.privacyAccepted === true
 
-    if (!name || !email || !message) {
+    if (website) {
+      return NextResponse.json({ success: true })
+    }
+
+    if (!name || !email || !message || !privacyAccepted) {
       return NextResponse.json(
-        { error: "Missing required fields" },
+        { error: "Pflichtfelder oder Datenschutzeinwilligung fehlen" },
         { status: 400 }
       )
     }

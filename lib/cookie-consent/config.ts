@@ -7,9 +7,8 @@ export const CONSENT_MAX_AGE_SECONDS = 60 * 60 * 24 * 180;
 
 export const DEFAULT_CONSENT_SELECTIONS: ConsentSelections = {
   necessary: true,
-  preferences: false,
   analytics: false,
-  marketing: false,
+  externalMedia: false,
 };
 
 export const CONSENT_CATEGORIES: ConsentCategoryDefinition[] = [
@@ -23,15 +22,6 @@ export const CONSENT_CATEGORIES: ConsentCategoryDefinition[] = [
     descriptionKey: "cookie.categories.necessary.description",
   },
   {
-    key: "preferences",
-    required: false,
-    title: "Präferenzen",
-    description:
-      "Speichert optionale Einstellungen, damit Inhalte und Bedienung besser auf Ihre Auswahl abgestimmt werden können.",
-    titleKey: "cookie.categories.preferences.title",
-    descriptionKey: "cookie.categories.preferences.description",
-  },
-  {
     key: "analytics",
     required: false,
     title: "Analyse",
@@ -41,13 +31,13 @@ export const CONSENT_CATEGORIES: ConsentCategoryDefinition[] = [
     descriptionKey: "cookie.categories.analytics.description",
   },
   {
-    key: "marketing",
+    key: "externalMedia",
     required: false,
-    title: "Marketing",
+    title: "Externe Medien",
     description:
-      "Ermöglicht Marketing- und Werbefunktionen, etwa für Kampagnenmessung oder personalisierte Ansprache über Drittanbieter.",
-    titleKey: "cookie.categories.marketing.title",
-    descriptionKey: "cookie.categories.marketing.description",
+      "Erlaubt das Nachladen von eingebetteten Videos und anderen externen Inhalten, bei denen Drittdienste Ihre IP-Adresse und technische Metadaten erhalten können.",
+    titleKey: "cookie.categories.externalMedia.title",
+    descriptionKey: "cookie.categories.externalMedia.description",
   },
 ];
 
@@ -56,7 +46,7 @@ export const COOKIE_CONSENT_TEXT = {
     badge: "Datenschutz",
     title: "Ihre Privatsphäre zuerst",
     description:
-      "Wir verwenden notwendige Cookies für den sicheren Betrieb der Website. Analyse-, Marketing- und Präferenz-Cookies werden erst nach Ihrer Auswahl aktiviert.",
+      "Wir verwenden notwendige Cookies für den sicheren Betrieb der Website. Analyse-Tools und externe Medien werden erst nach Ihrer Auswahl aktiviert.",
     customizeLabel: "Einstellungen",
     rejectLabel: "Nur notwendige",
     acceptLabel: "Alle akzeptieren",
@@ -64,7 +54,7 @@ export const COOKIE_CONSENT_TEXT = {
   modal: {
     title: "Cookie-Einstellungen",
     description:
-      "Wählen Sie pro Kategorie, welche optionalen Cookies Sie zulassen möchten. Ihre Auswahl können Sie jederzeit im Footer ändern.",
+      "Wählen Sie pro Kategorie, welche optionalen Dienste Sie zulassen möchten. Ihre Auswahl können Sie jederzeit im Footer ändern.",
     saveLabel: "Auswahl speichern",
     acceptAllLabel: "Alle akzeptieren",
     rejectAllLabel: "Nur notwendige",

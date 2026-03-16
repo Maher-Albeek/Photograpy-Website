@@ -2,11 +2,11 @@ import { NextResponse } from "next/server"
 
 export async function POST(req: Request) {
   try {
-    const { email } = await req.json()
+    const { email, privacyAccepted } = await req.json()
 
-    if (!email) {
+    if (!email || privacyAccepted !== true) {
       return NextResponse.json(
-        { error: "Email is required" },
+        { error: "E-Mail oder Datenschutzeinwilligung fehlt" },
         { status: 400 }
       )
     }

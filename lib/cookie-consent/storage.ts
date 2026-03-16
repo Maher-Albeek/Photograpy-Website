@@ -12,9 +12,8 @@ import type { ConsentCategory, ConsentSelections, StoredConsent } from "@/types/
 function buildSelections(input?: Partial<ConsentSelections>): ConsentSelections {
   return {
     necessary: true,
-    preferences: input?.preferences ?? DEFAULT_CONSENT_SELECTIONS.preferences,
     analytics: input?.analytics ?? DEFAULT_CONSENT_SELECTIONS.analytics,
-    marketing: input?.marketing ?? DEFAULT_CONSENT_SELECTIONS.marketing,
+    externalMedia: input?.externalMedia ?? DEFAULT_CONSENT_SELECTIONS.externalMedia,
   };
 }
 
@@ -143,8 +142,7 @@ export function isCategoryAllowed(
 
 export function createRejectAllConsent(): StoredConsent {
   return createStoredConsent({
-    preferences: false,
     analytics: false,
-    marketing: false,
+    externalMedia: false,
   });
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import ExternalMediaEmbed from "@/components/cookie-consent/ExternalMediaEmbed";
 
 type VideoSource = "bunny" | "youtube" | "vimeo" | "embed";
 
@@ -72,7 +73,7 @@ function getEmbedUrl(video: VideoItem) {
   if (video.source === "youtube") {
     const id = extractYouTubeId(video.videoId || "");
     if (!id) return "";
-    return `https://www.youtube.com/embed/${id}`;
+    return `https://www.youtube-nocookie.com/embed/${id}`;
   }
   if (video.source === "vimeo") {
     const id = extractVimeoId(video.videoId || "");
@@ -83,6 +84,13 @@ function getEmbedUrl(video: VideoItem) {
     return video.url || "";
   }
   return "";
+}
+
+function getVideoProvider(video: VideoItem) {
+  if (video.source === "bunny") return "Bunny Stream";
+  if (video.source === "youtube") return "YouTube";
+  if (video.source === "vimeo") return "Vimeo";
+  return "einen externen Anbieter";
 }
 
 export default function VideoGalleryContent() {
@@ -131,14 +139,19 @@ export default function VideoGalleryContent() {
             if (!embedUrl) return null;
             return (
               <div key={`${video.source}-${idx}`} className="w-full aspect-w-16 aspect-h-9">
-                <iframe
-                  src={embedUrl}
+                <ExternalMediaEmbed
                   title={video.title || `Video ${idx + 1}`}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="w-full h-full rounded-md shadow-md"
-                ></iframe>
+                  provider={getVideoProvider(video)}
+                >
+                  <iframe
+                    src={embedUrl}
+                    title={video.title || `Video ${idx + 1}`}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="h-full w-full rounded-md shadow-md"
+                  ></iframe>
+                </ExternalMediaEmbed>
               </div>
             );
           })}

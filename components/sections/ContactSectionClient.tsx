@@ -1,10 +1,29 @@
 "use client"
 
+import Link from "next/link"
 import { useState } from "react"
 import styles from "@/app/css/sections/ContactSection.module.css"
 
 type Category = {
   name: string
+}
+
+type ContactFormState = {
+  name: string
+  email: string
+  category: string
+  message: string
+  privacyAccepted: boolean
+  website: string
+}
+
+const initialForm: ContactFormState = {
+  name: "",
+  email: "",
+  category: "",
+  message: "",
+  privacyAccepted: false,
+  website: "",
 }
 
 export default function ContactSectionClient({ categories }: { categories: Category[] }) {
@@ -13,13 +32,7 @@ export default function ContactSectionClient({ categories }: { categories: Categ
     type: "success" | "error"
     message: string
   }>(null)
-
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    category: "",
-    message: "",
-  })
+  const [form, setForm] = useState<ContactFormState>(initialForm)
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -35,12 +48,12 @@ export default function ContactSectionClient({ categories }: { categories: Categ
     setLoading(false)
 
     if (res.ok) {
-      setToast({ type: "success", message: "Nachricht wurde erfolgreich gesendet" })
-      setForm({ name: "", email: "", category: "", message: "" })
+      setToast({ type: "success", message: "Nachricht wurde erfolgreich gesendet." })
+      setForm(initialForm)
     } else {
       setToast({
         type: "error",
-        message: data.error || "Etwas ist schiefgelaufen",
+        message: data.error || "Etwas ist schiefgelaufen.",
       })
     }
 
@@ -49,8 +62,8 @@ export default function ContactSectionClient({ categories }: { categories: Categ
 
   return (
     <section id="contact" className="py-14 text-[var(--color-ink)]">
-      <div className="container mx-auto px-6 max-w-6xl">
-        <p className="text-center text-[var(--color-ink)] opacity-80 max-w-2xl mx-auto mb-10">
+      <div className="container mx-auto max-w-6xl px-6">
+        <p className="mx-auto mb-10 max-w-2xl text-center text-[var(--color-ink)] opacity-80">
           Erzähle mir kurz von deinem Projekt, ich melde mich so schnell wie möglich.
         </p>
 
@@ -112,6 +125,18 @@ export default function ContactSectionClient({ categories }: { categories: Categ
                   </select>
                 </label>
 
+                <label className={styles.honeypot} aria-hidden="true">
+                  <span className={styles.label}>Website</span>
+                  <input
+                    type="text"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    className={styles.control}
+                    value={form.website}
+                    onChange={(e) => setForm({ ...form, website: e.target.value })}
+                  />
+                </label>
+
                 <label className={styles.field}>
                   <span className={styles.label}>Nachricht</span>
                   <textarea
@@ -123,6 +148,29 @@ export default function ContactSectionClient({ categories }: { categories: Categ
                     required
                   />
                 </label>
+
+                <label className={styles.consentRow}>
+                  <input
+                    type="checkbox"
+                    checked={form.privacyAccepted}
+                    onChange={(e) =>
+                      setForm({ ...form, privacyAccepted: e.target.checked })
+                    }
+                    required
+                  />
+                  <span>
+                    Ich habe die Hinweise zur Verarbeitung meiner Angaben in der{" "}
+                    <Link href="/datenschutz" className={styles.inlineLink}>
+                      Datenschutzerklärung
+                    </Link>{" "}
+                    gelesen und bin mit der Bearbeitung meiner Anfrage einverstanden.
+                  </span>
+                </label>
+
+                <p className={styles.privacyHint}>
+                  Ihre Angaben werden ausschließlich zur Bearbeitung Ihrer Anfrage
+                  verwendet und in der Projektdatenbank gespeichert.
+                </p>
 
                 <button
                   type="submit"

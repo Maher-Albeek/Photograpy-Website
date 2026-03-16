@@ -1,20 +1,25 @@
 import type { NextConfig } from "next";
 
 const isDev = process.env.NODE_ENV !== "production";
+const hasGoogleAnalytics = Boolean(process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim());
 const scriptSrc = isDev
-  ? "'self' 'unsafe-inline' 'unsafe-eval'"
-  : "'self' 'unsafe-inline'";
+  ? ["'self'", "'unsafe-inline'", "'unsafe-eval'", "https://www.googletagmanager.com"]
+  : [
+      "'self'",
+      "'unsafe-inline'",
+      ...(hasGoogleAnalytics ? ["https://www.googletagmanager.com"] : []),
+    ];
 const connectSrc = isDev ? "'self' ws: http: https:" : "'self' https:";
 const upgradeInsecure = isDev ? [] : ["upgrade-insecure-requests"];
 
 const contentSecurityPolicy = [
   "default-src 'self'",
-  `script-src ${scriptSrc}`,
+  `script-src ${scriptSrc.join(" ")}`,
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob: https:",
   "font-src 'self' data: https:",
   `connect-src ${connectSrc}`,
-  "frame-src 'self'",
+  "frame-src 'self' https://iframe.mediadelivery.net https://www.youtube.com https://www.youtube-nocookie.com https://player.vimeo.com",
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'self'",
@@ -23,7 +28,6 @@ const contentSecurityPolicy = [
 ].join("; ");
 
 const nextConfig: NextConfig = {
-  // âœ… Ù…Ø¤Ù‚ØªØ§Ù‹ Ù„ØªØ¬Ø§ÙˆØ² Ø£Ø®Ø·Ø§Ø¡ TypeScript Ø£Ø«Ù†Ø§Ø¡ build
   typescript: { ignoreBuildErrors: true },
   images: {
     remotePatterns: [

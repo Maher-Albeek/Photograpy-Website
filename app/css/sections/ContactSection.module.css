@@ -92,6 +92,14 @@
   gap: 0.45rem;
 }
 
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 .label {
   font-size: 0.8rem;
   letter-spacing: 0.12em;
@@ -187,6 +195,33 @@
   opacity: 0.6;
   cursor: not-allowed;
   transform: none;
+}
+
+.consentRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  color: #d2d2d2;
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.consentRow input {
+  margin-top: 0.28rem;
+  accent-color: #ff5a00;
+}
+
+.inlineLink {
+  color: #ffe7d0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.privacyHint {
+  margin: -0.35rem 0 0;
+  color: #b7b7b7;
+  font-size: 0.82rem;
+  line-height: 1.6;
 }
 
 .isLoading {

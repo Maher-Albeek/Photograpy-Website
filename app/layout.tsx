@@ -83,7 +83,7 @@ export default async function RootLayout({
   const initialConsentValue = cookieStore.get(CONSENT_COOKIE_NAME)?.value ?? null
 
   return (
-    <html lang="en">
+    <html lang="de">
       <body
         className={`${bilona.variable} ${cabinest.variable} ${aurelia.variable} ${csBeauty.variable} ${ephesis.variable} ${allan.variable} ${bodoniModa.variable}`}
       >
