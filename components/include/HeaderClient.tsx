@@ -24,7 +24,7 @@ type SocialItem = {
 }
 
 const navItems: NavItem[] = [
-  { label: "Home", href: "/", aria: "Go to home" },
+  { label: "Homeee", href: "/", aria: "Go to home" },
   { label: "About Me", href: "/aboutMe", aria: "Learn more about me" },
   { label: "Photo Gallery", href: "/photoGallery", aria: "View my photo gallery" },
   { label: "Video Gallery", href: "/videoGallery", aria: "View my video gallery" },
