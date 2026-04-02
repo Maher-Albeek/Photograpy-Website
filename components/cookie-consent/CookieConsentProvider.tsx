@@ -31,6 +31,7 @@ type CookieConsentContextValue = {
   isBannerOpen: boolean;
   isModalOpen: boolean;
   selections: ConsentSelections;
+  dismissBanner: () => void;
   openSettings: () => void;
   closeSettings: () => void;
   acceptAll: () => void;
@@ -43,6 +44,7 @@ type CookieConsentContextValue = {
 const CookieConsentContext = createContext<CookieConsentContextValue | null>(null);
 
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim() ?? "";
+const BANNER_DISMISSED_SESSION_KEY = "maher-cookie-banner-dismissed";
 
 export function CookieConsentProvider({
   children,
@@ -61,10 +63,20 @@ export function CookieConsentProvider({
     return readStoredConsent() ?? initialConsent;
   });
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const isBannerOpen = !hasValidConsent(consent);
+  const [isBannerDismissed, setIsBannerDismissed] = useState(false);
+  const isBannerOpen = !hasValidConsent(consent) && !isBannerDismissed;
 
   useEffect(() => {
     applyGoogleConsentDefaults();
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    const isDismissed = window.sessionStorage.getItem(BANNER_DISMISSED_SESSION_KEY) === "1";
+    setIsBannerDismissed(isDismissed);
   }, []);
 
   useEffect(() => {
@@ -128,6 +140,13 @@ export function CookieConsentProvider({
     isBannerOpen,
     isModalOpen,
     selections: consent?.categories ?? DEFAULT_CONSENT_SELECTIONS,
+    dismissBanner: () => {
+      if (typeof window !== "undefined") {
+        window.sessionStorage.setItem(BANNER_DISMISSED_SESSION_KEY, "1");
+      }
+
+      setIsBannerDismissed(true);
+    },
     openSettings: () => setIsModalOpen(true),
     closeSettings: () => setIsModalOpen(false),
     acceptAll,

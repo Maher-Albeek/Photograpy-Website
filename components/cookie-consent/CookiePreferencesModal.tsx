@@ -154,7 +154,7 @@ function CookiePreferencesDialog({
                     </p>
                   </div>
 
-                  <label className="inline-flex items-center gap-3 self-start text-sm font-medium text-white">
+                  <label className="flex w-full items-center justify-between gap-3 self-start text-sm font-medium text-white sm:inline-flex sm:w-auto sm:justify-start">
                     <span className="sr-only">{category.title} aktivieren</span>
                     <button
                       type="button"
@@ -184,7 +184,9 @@ function CookiePreferencesDialog({
                         }`}
                       />
                     </button>
-                    <span>{checked ? "Aktiv" : "Inaktiv"}</span>
+                    <span className="min-w-18 text-right text-xs sm:text-sm">
+                      {checked ? "Aktiv" : "Inaktiv"}
+                    </span>
                   </label>
                 </div>
               </section>

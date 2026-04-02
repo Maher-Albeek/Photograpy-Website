@@ -11,7 +11,7 @@ export default function CookieSettingsButton() {
       type="button"
       onClick={openSettings}
       aria-label={COOKIE_CONSENT_TEXT.footerButton.ariaLabel}
-      className="transition hover:text-[var(--color-caramel)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
+      className="inline-flex max-w-full text-left text-sm leading-snug underline-offset-4 transition hover:text-(--color-caramel) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent sm:text-base"
     >
       {COOKIE_CONSENT_TEXT.footerButton.label}
     </button>

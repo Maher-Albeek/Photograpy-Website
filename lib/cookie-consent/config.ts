@@ -50,6 +50,7 @@ export const COOKIE_CONSENT_TEXT = {
     customizeLabel: "Einstellungen",
     rejectLabel: "Nur notwendige",
     acceptLabel: "Alle akzeptieren",
+    closeLabel: "Schließen",
   },
   modal: {
     title: "Cookie-Einstellungen",
