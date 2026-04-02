@@ -1,6 +1,6 @@
 import Link from "next/link"
 import CookieSettingsButton from "@/components/cookie-consent/CookieSettingsButton"
-import FooterSubscribe from "./FooterSubscribe"
+import FooterSubscribeShell from "./FooterSubscribeShell"
 
 export default function Footer() {
   return (
@@ -30,7 +30,7 @@ export default function Footer() {
               Abonnieren Sie den Newsletter, um über neue Projekte und Angebote
               informiert zu bleiben.
             </p>
-            <FooterSubscribe />
+            <FooterSubscribeShell />
           </div>
 
           <div className="space-y-4">

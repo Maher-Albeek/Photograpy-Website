@@ -1,5 +1,5 @@
 import { sql } from "@/lib/db2"
-import ContactSectionClient from "./ContactSectionClient"
+import ContactSectionShell from "./ContactSectionShell"
 
 type Category = {
   name: string
@@ -15,5 +15,5 @@ export default async function ContactSection() {
 
   const categories = rows as Category[]
 
-  return <ContactSectionClient categories={categories} />
+  return <ContactSectionShell categories={categories} />
 }
