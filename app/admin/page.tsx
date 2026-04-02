@@ -36,11 +36,11 @@ export default async function AdminDashboard() {
       <h1 className="text-2xl font-bold">Dashboard</h1>
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        <StatCard  title="Projects" value={projects} />
-        <StatCard title="Messages" value={messages} />
-        <StatCard title="Categories" value={categories} />
-        <StatCard title="Testimonials" value={testimonials} />
-        <StatCard title="FAQ" value={faq} />
+        <StatCard title="Projects" value={projects} href="/admin/projects" />
+        <StatCard title="Messages" value={messages} href="/admin/messages" />
+        <StatCard title="Categories" value={categories} href="/admin/categories" />
+        <StatCard title="Testimonials" value={testimonials} href="/admin/testimonials" />
+        <StatCard title="FAQ" value={faq} href="/admin/faq" />
       </div>
     </main>
   );

@@ -1,24 +1,28 @@
+import Link from "next/link";
+
 type StatCardProps = {
   title: string;
   value: number | string;
   description?: string;
+  href?: string;
 };
 
 export default function StatCard({
   title,
   value,
   description,
+  href,
 }: StatCardProps) {
-  return (
-    <div
-      className="
-        card 
-        bg-base-100 
-        border 
-        border-base-300
-        hover:bg-base-200
-      "
-    >
+  const className = `
+    card
+    bg-base-100
+    border
+    border-base-300
+    transition
+    ${href ? "cursor-pointer hover:bg-base-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40" : "hover:bg-base-200"}
+  `;
+
+  const content = (
       <div className="card-body">
         <h3 className="text-sm font-medium text-base-content/60">
           {title}
@@ -34,6 +38,15 @@ export default function StatCard({
           </p>
         )}
       </div>
-    </div>
   );
+
+  if (href) {
+    return (
+      <Link href={href} className={className} aria-label={`Open ${title}`}>
+        {content}
+      </Link>
+    );
+  }
+
+  return <div className={className}>{content}</div>;
 }
