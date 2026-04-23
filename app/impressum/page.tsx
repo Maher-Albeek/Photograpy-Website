@@ -64,13 +64,13 @@ export default function ImpressumPage() {
         </LegalSubsection>
       </LegalSection>
 
-      <LegalSection title="Hinweise zur Prüfung vor Veröffentlichung">
+     {/*  <LegalSection title="Hinweise zur Prüfung vor Veröffentlichung">
         <ul className="list-disc space-y-2 pl-5">
           {legalConfig.manualChecks.map((item) => (
             <li key={item}>{item}</li>
           ))}
         </ul>
-      </LegalSection>
+      </LegalSection> */}
     </LegalPage>
   );
 }
