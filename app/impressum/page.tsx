@@ -3,8 +3,8 @@ export const revalidate = 0;
 
 import type { Metadata } from "next";
 import LegalPage from "@/components/legal/LegalPage";
-import { LegalSection, LegalSubsection } from "@/components/legal/LegalSection";
-import { getPublicContactDetails, legalConfig } from "@/lib/legal/config";
+import { LegalSection } from "@/components/legal/LegalSection";
+import { getPublicContactDetails } from "@/lib/legal/config";
 
 const contact = getPublicContactDetails();
 
@@ -17,7 +17,7 @@ export default function ImpressumPage() {
   return (
     <LegalPage
       title="Impressum"
-      intro="Die folgenden Angaben dienen der transparenten Anbieterkennzeichnung. Bitte prüfen Sie vor dem Livegang alle markierten Platzhalter und ergänzen Sie fehlende Pflichtangaben."
+      intro="Die folgenden Angaben enthalten die gesetzlich erforderliche Anbieterkennzeichnung fuer diese Website."
     >
       <LegalSection title="Angaben gemäß § 5 DDG">
         <p className="font-semibold text-white">{contact.legalName}</p>
@@ -27,6 +27,22 @@ export default function ImpressumPage() {
             <div key={line}>{line}</div>
           ))}
         </address>
+      </LegalSection>
+
+      <LegalSection title="Status des Angebots">
+        <p>
+          Diese Website wird derzeit als persoenliches Portfolio betrieben und dient der
+          Darstellung kreativer Arbeiten.
+        </p>
+        <p>
+          Aktuell wird kein gewerblicher Betrieb ueber diese Website gefuehrt und es
+          werden keine Auftraege ueber die Website abgeschlossen.
+        </p>
+        <p>
+          Sofern kuenftig eine Gewerbeanmeldung erfolgt, werden Impressum,
+          Datenschutzhinweise und etwaige Preis-/Leistungsseiten entsprechend
+          aktualisiert.
+        </p>
       </LegalSection>
 
       <LegalSection title="Kontakt">
@@ -52,25 +68,19 @@ export default function ImpressumPage() {
         <p>Anschrift wie oben.</p>
       </LegalSection>
 
-  {/*     <LegalSection title="Weitere Pflichtangaben">
-        <LegalSubsection title="Umsatzsteuer-ID">
-          <p>{contact.vatId}</p>
-        </LegalSubsection>
-        <LegalSubsection title="Berufsrechtliche Angaben">
-          <p>
-            [BITTE NUR ERGÄNZEN, WENN EINE REGLEMENTIERTE TÄTIGKEIT,
-            KAMMERZUGEHÖRIGKEIT ODER BESONDERE BERUFSORDNUNG TATSÄCHLICH BESTEHT]
-          </p>
-        </LegalSubsection>
+      <LegalSection title="Umsatzsteuer">
+        <p>
+          Eine Umsatzsteuer-Identifikationsnummer gemaess § 27a UStG wird derzeit nicht
+          gefuehrt.
+        </p>
       </LegalSection>
- */}
-     {/*  <LegalSection title="Hinweise zur Prüfung vor Veröffentlichung">
-        <ul className="list-disc space-y-2 pl-5">
-          {legalConfig.manualChecks.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
-      </LegalSection> */}
+
+      <LegalSection title="Verbraucherstreitbeilegung">
+        <p>
+          Wir sind nicht verpflichtet und nicht bereit, an Streitbeilegungsverfahren vor
+          einer Verbraucherschlichtungsstelle teilzunehmen.
+        </p>
+      </LegalSection>
     </LegalPage>
   );
 }

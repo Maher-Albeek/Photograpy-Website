@@ -288,7 +288,7 @@ export default function DatenschutzPage() {
         </p>
       </LegalSection>
 
-      <LegalSection title="18. Interne Pruefpunkte vor Veroeffentlichung">
+      <LegalSection title="18. Interne Prüfpunkte vor Veröffentlichung">
         <ul className="list-disc space-y-2 pl-5">
           {legalConfig.manualChecks.map((item) => (
             <li key={item}>{item}</li>
