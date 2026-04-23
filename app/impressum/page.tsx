@@ -52,7 +52,7 @@ export default function ImpressumPage() {
         <p>Anschrift wie oben.</p>
       </LegalSection>
 
-      <LegalSection title="Weitere Pflichtangaben">
+  {/*     <LegalSection title="Weitere Pflichtangaben">
         <LegalSubsection title="Umsatzsteuer-ID">
           <p>{contact.vatId}</p>
         </LegalSubsection>
@@ -63,7 +63,7 @@ export default function ImpressumPage() {
           </p>
         </LegalSubsection>
       </LegalSection>
-
+ */}
      {/*  <LegalSection title="Hinweise zur Prüfung vor Veröffentlichung">
         <ul className="list-disc space-y-2 pl-5">
           {legalConfig.manualChecks.map((item) => (
