@@ -16,14 +16,13 @@ export const legalConfig = {
     vatId: "[BITTE UMSATZSTEUER-ID ERGÄNZEN, FALLS VORHANDEN]",
   },
   compliance: {
-    hostingProvider:
-      "[Vercel Inc]",
+    hostingProvider: "Vercel Inc.",
     hostingLocation:
-      "[EU/USA – Hosting über Vercel Inc. mit globaler Infrastruktur (CDN). Auftragsverarbeitung gemäß DPA des Hosting-Anbieters.]",
+      "EU/USA - Hosting über Vercel Inc. mit globaler Infrastruktur (CDN). Auftragsverarbeitung gemäß DPA des Hosting-Anbieters.",
     contactRetention:
-      "[Kontaktanfragen werden nach abgeschlossener Bearbeitung gelöscht, sofern keine gesetzlichen Aufbewahrungspflichten bestehen.]",
+      "Kontaktanfragen werden nach abgeschlossener Bearbeitung gelöscht, sofern keine gesetzlichen Aufbewahrungspflichten bestehen.",
     newsletterRetention:
-      "[Newsletter-Anmeldungen erfolgen über Double-Opt-In. Daten werden gespeichert, solange das Newsletter-Abonnement aktiv ist und können jederzeit gelöscht werden.]",
+      "Newsletter-Anmeldungen erfolgen über Double-Opt-In. Daten werden gespeichert, solange das Newsletter-Abonnement aktiv ist, und können jederzeit gelöscht werden.",
     lastReviewed: "16.03.2026",
   },
   services: {

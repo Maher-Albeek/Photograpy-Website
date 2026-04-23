@@ -23,7 +23,7 @@ export default function DatenschutzPage() {
   return (
     <LegalPage
       title="Datenschutzerklärung"
-      intro="Diese Erklärung beschreibt die aktuell im Projekt nachvollziehbare Verarbeitung personenbezogener Daten. Sie ersetzt keine individuelle Rechtsberatung. Bitte prüfen Sie alle markierten Platzhalter und die tatsächliche Live-Konfiguration vor Veröffentlichung."
+      intro="Mit diesen Datenschutzhinweisen informieren wir Sie über Art, Umfang und Zweck der Verarbeitung personenbezogener Daten bei der Nutzung dieser Website sowie über Ihre Rechte nach der Datenschutz-Grundverordnung (DSGVO)."
     >
       <LegalSection title="1. Verantwortlicher">
         <p className="font-semibold text-white">{contact.legalName}</p>
@@ -49,7 +49,28 @@ export default function DatenschutzPage() {
         </p>
       </LegalSection>
 
-      <LegalSection title="2. Hosting und Server-Log-Dateien">
+      <LegalSection title="2. Rechtsgrundlagen der Verarbeitung">
+        <p>
+          Wir verarbeiten personenbezogene Daten auf Grundlage der jeweils einschlaegigen
+          gesetzlichen Erlaubnistatbestaende, insbesondere:
+        </p>
+        <ul className="list-disc space-y-2 pl-5">
+          <li>Art. 6 Abs. 1 lit. a DSGVO (Einwilligung),</li>
+          <li>
+            Art. 6 Abs. 1 lit. b DSGVO (Verarbeitung zur Durchfuehrung vorvertraglicher
+            Massnahmen oder zur Vertragserfuellung),
+          </li>
+          <li>
+            Art. 6 Abs. 1 lit. c DSGVO (Erfuellung rechtlicher Verpflichtungen),
+          </li>
+          <li>
+            Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an sicherem,
+            wirtschaftlichem und nutzerfreundlichem Betrieb dieser Website).
+          </li>
+        </ul>
+      </LegalSection>
+
+      <LegalSection title="3. Hosting und Server-Log-Dateien">
         <p>
           Beim Aufruf dieser Website verarbeitet der Hosting-Anbieter technisch
           erforderliche Verbindungsdaten, insbesondere IP-Adresse, Datum und Uhrzeit,
@@ -67,7 +88,7 @@ export default function DatenschutzPage() {
         </p>
       </LegalSection>
 
-      <LegalSection title="3. Cookies und Einwilligungsverwaltung">
+      <LegalSection title="4. Cookies und Einwilligungsverwaltung">
         <p>
           Diese Website verwendet ein Consent-Tool, um Ihre Auswahl zu optionalen
           Diensten zu speichern. Dabei wird ein notwendiges Cookie gesetzt. Zusätzlich
@@ -85,7 +106,7 @@ export default function DatenschutzPage() {
         </p>
       </LegalSection>
 
-      <LegalSection title="4. Kontaktformular und Kontaktaufnahme">
+      <LegalSection title="5. Kontaktformular und Kontaktaufnahme">
         <p>
           Wenn Sie das Kontaktformular nutzen, werden Name, E-Mail-Adresse, optional die
           Projektkategorie und Ihre Nachricht verarbeitet. Die Daten werden über eine
@@ -98,7 +119,7 @@ export default function DatenschutzPage() {
         <p>Löschfrist: {contactRetention}</p>
       </LegalSection>
 
-      <LegalSection title="5. Newsletter über Brevo">
+      <LegalSection title="6. Newsletter ueber Brevo">
         <p>
           Auf der Website ist eine Newsletter-Anmeldung eingebunden. Dabei wird Ihre
           E-Mail-Adresse an Brevo übermittelt, sofern Sie die entsprechende
@@ -113,7 +134,7 @@ export default function DatenschutzPage() {
       </LegalSection>
 
       {hasAnalytics ? (
-        <LegalSection title="6. Google Analytics">
+        <LegalSection title="7. Google Analytics">
           <p>
             Sofern eine gültige Google-Analytics-Mess-ID gesetzt ist und Sie der
             Kategorie <strong>Analyse</strong> zustimmen, wird Google Analytics erst
@@ -131,7 +152,7 @@ export default function DatenschutzPage() {
           </p>
         </LegalSection>
       ) : (
-        <LegalSection title="6. Analyse-Tools">
+        <LegalSection title="7. Analyse-Tools">
           <p>
             Im aktuellen Projekt ist die technische Einbindung für Google Analytics
             vorbereitet, jedoch nur aktiv, wenn produktiv eine gültige Mess-ID gesetzt
@@ -141,7 +162,7 @@ export default function DatenschutzPage() {
         </LegalSection>
       )}
 
-      <LegalSection title="7. Externe Medien und eingebettete Videos">
+      <LegalSection title="8. Externe Medien und eingebettete Videos">
         <p>
           Auf Galerie-Seiten können externe Videos von{" "}
           {legalConfig.services.videoProviders.join(", ")} eingebunden werden. Diese
@@ -155,7 +176,7 @@ export default function DatenschutzPage() {
         </p>
       </LegalSection>
 
-      <LegalSection title="8. Schriftarten und statische Inhalte">
+      <LegalSection title="9. Schriftarten und statische Inhalte">
         <p>
           Die im Frontend verwendeten Schriftarten werden lokal im Projekt ausgeliefert.
           Es findet nach aktuellem Stand keine direkte Einbindung von Google Fonts über
@@ -163,7 +184,53 @@ export default function DatenschutzPage() {
         </p>
       </LegalSection>
 
-      <LegalSection title="9. Ihre Rechte">
+      <LegalSection title="10. Empfaenger personenbezogener Daten">
+        <p>
+          Eine Weitergabe personenbezogener Daten erfolgt nur, soweit dies fuer die
+          Bereitstellung der Website und die Erbringung unserer Leistungen erforderlich
+          ist, eine gesetzliche Verpflichtung besteht oder Sie eingewilligt haben.
+        </p>
+        <p>
+          Empfaenger koennen insbesondere sein: Hosting- und IT-Dienstleister,
+          E-Mail-/Newsletter-Dienstleister (z. B. Brevo) sowie Anbieter externer Medien
+          und Analysedienste (bei entsprechender Einwilligung).
+        </p>
+      </LegalSection>
+
+      <LegalSection title="11. Drittlanduebermittlung">
+        <p>
+          Bei einzelnen Diensten kann eine Verarbeitung personenbezogener Daten in
+          Staaten ausserhalb der Europaeischen Union (EU) bzw. des Europaeischen
+          Wirtschaftsraums (EWR) nicht ausgeschlossen werden (insbesondere bei globalen
+          Cloud- und Medienanbietern).
+        </p>
+        <p>
+          Sofern eine solche Uebermittlung erfolgt, achten wir auf geeignete Garantien,
+          insbesondere EU-Standardvertragsklauseln oder eine Angemessenheitsentscheidung
+          der EU-Kommission.
+        </p>
+      </LegalSection>
+
+      <LegalSection title="12. Speicherdauer">
+        <p>
+          Personenbezogene Daten werden nur so lange gespeichert, wie es fuer die
+          jeweiligen Zwecke erforderlich ist oder gesetzliche Aufbewahrungspflichten
+          bestehen.
+        </p>
+        <p>Kontaktanfragen: {contactRetention}</p>
+        <p>Newsletter: {newsletterRetention}</p>
+      </LegalSection>
+
+      <LegalSection title="13. Datensicherheit">
+        <p>
+          Wir setzen angemessene technische und organisatorische Massnahmen ein, um
+          personenbezogene Daten gegen Verlust, Manipulation, unberechtigten Zugriff und
+          unbefugte Offenlegung zu schuetzen. Unsere Sicherheitsmassnahmen werden
+          entsprechend der technologischen Entwicklung fortlaufend verbessert.
+        </p>
+      </LegalSection>
+
+      <LegalSection title="14. Ihre Rechte">
         <LegalSubsection title="Betroffenenrechte">
           <p>
             Sie haben im Rahmen der gesetzlichen Voraussetzungen insbesondere das Recht
@@ -185,15 +252,33 @@ export default function DatenschutzPage() {
         </LegalSubsection>
       </LegalSection>
 
-      <LegalSection title="10. Manuell vor Veröffentlichung prüfen">
+      <LegalSection title="15. Beschwerderecht bei einer Aufsichtsbehoerde">
+        <p>
+          Unbeschadet anderweitiger verwaltungsrechtlicher oder gerichtlicher
+          Rechtsbehelfe steht Ihnen das Recht auf Beschwerde bei einer
+          Datenschutz-Aufsichtsbehoerde zu, insbesondere in dem Mitgliedstaat Ihres
+          Aufenthaltsorts, Ihres Arbeitsplatzes oder des Orts des mutmasslichen
+          Verstosses.
+        </p>
+      </LegalSection>
+
+      <LegalSection title="16. Aktualitaet dieser Datenschutzhinweise">
+        <p>
+          Wir behalten uns vor, diese Datenschutzhinweise anzupassen, damit sie stets
+          den aktuellen rechtlichen Anforderungen entsprechen oder um Aenderungen unserer
+          Leistungen in den Datenschutzhinweisen umzusetzen.
+        </p>
+        <p className="pt-2 text-sm text-[rgba(255,231,208,0.64)]">
+          Stand dieser Datenschutzhinweise: {legalConfig.compliance.lastReviewed}
+        </p>
+      </LegalSection>
+
+      <LegalSection title="17. Interne Pruefpunkte vor Veroeffentlichung">
         <ul className="list-disc space-y-2 pl-5">
           {legalConfig.manualChecks.map((item) => (
             <li key={item}>{item}</li>
           ))}
         </ul>
-        <p className="pt-2 text-sm text-[rgba(255,231,208,0.64)]">
-          Stand dieser Projektfassung: {legalConfig.compliance.lastReviewed}
-        </p>
       </LegalSection>
     </LegalPage>
   );
