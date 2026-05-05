@@ -5,6 +5,7 @@ import Image from "next/image"
 import { Github, Instagram, Linkedin, Music2 } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 import styles from "../../app/css/staggered-menu.module.css"
+import { a } from "motion/react-client"
 
 type Settings = {
   logo?: string
@@ -21,6 +22,7 @@ type SocialItem = {
   label: string
   href: string
   icon: React.ComponentType<{ className?: string }>
+  accent: string
 }
 
 const navItems: NavItem[] = [
@@ -30,13 +32,14 @@ const navItems: NavItem[] = [
   { label: "Video Gallery", href: "/videoGallery", aria: "View my video gallery" },
   { label: "Impressum", href: "/impressum", aria: "Impressum" },
   { label: "Datenschutz", href: "/datenschutz", aria: "Datenschutz" },
+  { label: "Developer Portfolio", href: "https://portofolio.maher-albeek.com/", aria: "Visit my developer portfolio" },
 ]
 
 const socialItems: SocialItem[] = [
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/maher-albeek", icon: Linkedin },
-  { label: "GitHub", href: "https://github.com/Maher-Albeek", icon: Github },
-  { label: "Instagram", href: "https://www.instagram.com/maher_albeek?igsh=Z2EyNmIwbjBsa21y", icon: Instagram },
-  { label: "Tiktok", href: "https://www.tiktok.com/@maher_albeek?is_from_webapp=1&sender_device=pc", icon: Music2 },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/maher-albeek", icon: Linkedin, accent: "#0a66c2" },
+  { label: "GitHub", href: "https://github.com/Maher-Albeek", icon: Github, accent: "#ffffff" },
+  { label: "Instagram", href: "https://www.instagram.com/maher_albeek?igsh=Z2EyNmIwbjBsa21y", icon: Instagram, accent: "#e4405f" },
+  { label: "Tiktok", href: "https://www.tiktok.com/@maher_albeek?is_from_webapp=1&sender_device=pc", icon: Music2, accent: "#25f4ee" },
 ]
 
 export default function HeaderClient({ settings }: { settings: Settings | null }) {
@@ -131,6 +134,8 @@ export default function HeaderClient({ settings }: { settings: Settings | null }
       <div className={styles.bar}>
         <div className={styles.logo}>
           {logoSrc ? (
+            <a href="/" aria-label="Home">
+
             <Image
               src={logoSrc}
               alt={settings?.site_name || "Logo"}
@@ -140,6 +145,7 @@ export default function HeaderClient({ settings }: { settings: Settings | null }
               className={styles.logoImg}
               draggable={false}
             />
+            </a>
           ) : (
             <span className={styles.logoText}>{settings?.site_name || "Portfolio"}</span>
           )}
@@ -205,8 +211,10 @@ export default function HeaderClient({ settings }: { settings: Settings | null }
                       rel="noopener noreferrer"
                       className={styles.socialLink}
                       aria-label={social.label}
+                      style={{ ["--social-accent" as string]: social.accent }}
                     >
                       <Icon className={styles.socialIcon} aria-hidden="true" />
+                      <span className={styles.socialTooltip} aria-hidden="true">{social.label}</span>
                       <span className={styles.srOnly}>{social.label}</span>
                     </a>
                   </li>

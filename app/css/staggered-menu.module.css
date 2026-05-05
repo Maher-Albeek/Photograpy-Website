@@ -242,6 +242,7 @@
 }
 
 .socialLink {
+  --social-accent: #ee5b05;
   color: #f6f6ff;
   text-decoration: none;
   display: inline-flex;
@@ -253,20 +254,77 @@
   border-radius: 14px;
   background: rgba(255, 255, 255, 0.04);
   position: relative;
-  transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+  overflow: visible;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  transition: background-color 0.28s ease, border-color 0.28s ease, transform 0.28s ease, box-shadow 0.28s ease;
 }
 
 .socialLink:hover,
 .socialLink:focus-visible {
-  border-color: rgb(238, 91, 5);
-  background: rgba(240, 94, 2, 0.12);
-  transform: translateY(-2px);
+  border-color: var(--social-accent);
+  background: color-mix(in srgb, var(--social-accent) 18%, transparent);
+  transform: translateY(-4px) scale(1.04);
+  box-shadow: 0 12px 28px color-mix(in srgb, var(--social-accent) 34%, transparent);
 }
 
 .socialIcon {
   width: 20px;
   height: 20px;
   stroke-width: 1.6;
+  transition: color 0.24s ease, transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), filter 0.24s ease;
+}
+
+.socialLink:hover .socialIcon,
+.socialLink:focus-visible .socialIcon {
+  color: var(--social-accent);
+  transform: scale(1.12) rotate(-6deg);
+  filter: drop-shadow(0 0 10px color-mix(in srgb, var(--social-accent) 52%, transparent));
+}
+
+.socialTooltip {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 8px);
+  transform: translate(-50%, 6px);
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: rgba(12, 11, 25, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #f7f3ff;
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.socialTooltip::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  width: 7px;
+  height: 7px;
+  background: rgba(12, 11, 25, 0.96);
+  border-right: 1px solid rgba(255, 255, 255, 0.18);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.socialLink:hover .socialTooltip,
+.socialLink:focus-visible .socialTooltip {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .socialLink,
+  .socialIcon,
+  .socialTooltip {
+    transition: none;
+  }
 }
 
 .srOnly {
