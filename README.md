@@ -30,7 +30,7 @@ https://fotografie.maher-albeek.com
 - Structured codebase with reusable components
 
 ## Screenshots
-Add 3-5 screenshots here.
+
 
 ## Installation
 
